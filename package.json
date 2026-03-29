@@ -2,6 +2,9 @@
   "name": "@revisium/payment-client",
   "version": "0.0.1",
   "description": "Generated TypeScript client for revisium-payment service",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -57,8 +60,14 @@
     "@hey-api/client-fetch": "^0.13.0"
   },
   "jest": {
-    "extensionsToTreatAsEsm": [".ts"],
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": "./",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -77,6 +86,9 @@
       "!src/**/__tests__/**",
       "!src/**/index.ts"
     ],
-    "coverageReporters": ["text-summary", "lcov"]
+    "coverageReporters": [
+      "text-summary",
+      "lcov"
+    ]
   }
 }
