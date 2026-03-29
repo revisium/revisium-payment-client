@@ -2,9 +2,19 @@
   "name": "@revisium/payment-client",
   "version": "0.0.1",
   "description": "Generated TypeScript client for revisium-payment service",
-  "publishConfig": {
-    "access": "public"
+  "keywords": [
+    "revisium",
+    "payment",
+    "client",
+    "rest-api",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revisium/revisium-payment-client.git"
   },
+  "license": "MIT",
+  "author": "Anton Kashirov",
   "type": "module",
   "exports": {
     ".": {
@@ -25,22 +35,26 @@
     "dist"
   ],
   "scripts": {
-    "generate": "openapi-ts",
-    "generate:download": "curl -o specs/openapi.json http://localhost:8082/api-json && npm run generate",
     "build": "tsdown && npm run build:dts",
     "build:dts": "tsc -p tsconfig.build.json",
-    "tsc": "tsc --noEmit",
+    "dev": "tsdown --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+    "test:cov": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --silent --passWithNoTests",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "lint:ci": "eslint . --max-warnings 0",
-    "lint:fix": "eslint . --max-warnings 0 --fix",
-    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit --passWithNoTests",
-    "test:cov": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit --coverage --silent --passWithNoTests",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.ts\"",
-    "version:minor": "npm version minor --no-git-tag-version",
-    "version:patch": "npm version patch --no-git-tag-version"
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "tsc": "tsc --noEmit",
+    "generate": "openapi-ts",
+    "generate:download": "curl -o specs/openapi.json http://localhost:8082/api-json && npm run generate",
+    "prepublishOnly": "npm run build && npm run tsc"
+  },
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.3",
-    "@hey-api/client-fetch": "^0.13.0",
     "@hey-api/openapi-ts": "^0.92.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.19.3",
@@ -56,18 +70,15 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0"
   },
-  "dependencies": {
-    "@hey-api/client-fetch": "^0.13.0"
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "jest": {
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
+    "extensionsToTreatAsEsm": [".ts"],
+    "moduleFileExtensions": ["js", "json", "ts"],
     "rootDir": "./",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
@@ -86,9 +97,6 @@
       "!src/**/__tests__/**",
       "!src/**/index.ts"
     ],
-    "coverageReporters": [
-      "text-summary",
-      "lcov"
-    ]
+    "coverageReporters": ["text-summary", "lcov"]
   }
 }
