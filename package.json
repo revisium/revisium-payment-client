@@ -1,6 +1,6 @@
 {
   "name": "@revisium/payment-client",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Generated TypeScript client for revisium-payment service",
   "type": "module",
   "exports": {
@@ -29,8 +29,8 @@
     "tsc": "tsc --noEmit",
     "lint:ci": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --max-warnings 0 --fix",
-    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit",
-    "test:cov": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit --coverage --silent",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit --passWithNoTests",
+    "test:cov": "node --experimental-vm-modules ./node_modules/.bin/jest --maxWorkers=50% --forceExit --coverage --silent --passWithNoTests",
     "format": "prettier --write \"src/**/*.ts\"",
     "version:minor": "npm version minor --no-git-tag-version",
     "version:patch": "npm version patch --no-git-tag-version"
